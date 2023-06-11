@@ -13,9 +13,9 @@
   },
   "author": "Himel khan",
   "license": "ISC",
-"lint-staged": {
+  "lint-staged": {
     "src/**/*.ts": "yarn lint-prettier"
-},
+  },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
