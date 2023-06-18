@@ -2,21 +2,23 @@ import { NextFunction, Request, RequestHandler, Response } from 'express'
 import status from 'http-status'
 import catchAsync from '../../../shared/catchAsync'
 import sendResponse from '../../../shared/sendResponse'
-import { UserServices } from './user.services'
+import { AcademicSemesterService } from './academicSemester.services'
 
-const createUser: RequestHandler = catchAsync(
+const createSemester: RequestHandler = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { user } = req.body
-    const result = await UserServices.createUser(user)
+    const { ...academicSemesterData } = req.body
+    const result = await AcademicSemesterService.createSemester(
+      academicSemesterData
+    )
     next()
 
     sendResponse(res, {
       statusCode: status.OK,
       success: true,
-      message: 'User Created Successfully!',
+      message: 'Academic Semester is created successfully!',
       data: result,
     })
   }
 )
 
-export const UserController = { createUser }
+export const AcademicSemesterController = { createSemester }
