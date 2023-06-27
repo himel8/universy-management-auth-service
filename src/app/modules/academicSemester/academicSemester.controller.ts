@@ -1,4 +1,4 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express'
+import { Request, RequestHandler, Response } from 'express'
 import status from 'http-status'
 import { paginationList } from '../../../constant/pagination'
 import catchAsync from '../../../shared/catchAsync'
@@ -9,7 +9,7 @@ import { IAcademicSemester } from './academicSemester.interface'
 import { AcademicSemesterService } from './academicSemester.services'
 
 const createSemester: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const { ...academicSemesterData } = req.body
     const result = await AcademicSemesterService.createSemester(
       academicSemesterData
@@ -21,12 +21,11 @@ const createSemester: RequestHandler = catchAsync(
       message: 'Academic Semester is created successfully!',
       data: result,
     })
-    next()
   }
 )
 
 const getAllSemester: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const filters = pick(req.query, academicSemesterFilterableFields)
     const paginationOptions = pick(req.query, paginationList)
 
@@ -42,12 +41,11 @@ const getAllSemester: RequestHandler = catchAsync(
       meta: result.meta,
       data: result.data,
     })
-    next()
   }
 )
 
 const getSingleSemester: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const id = req.params.id
     const result = await AcademicSemesterService.getSingleSemester(id)
 
@@ -57,12 +55,11 @@ const getSingleSemester: RequestHandler = catchAsync(
       message: 'Semester retrieved successfully',
       data: result,
     })
-    next()
   }
 )
 
 const updateSemester: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const id = req.params.id
     const updatedData = req.body
     const result = await AcademicSemesterService.updateSemester(id, updatedData)
@@ -73,11 +70,10 @@ const updateSemester: RequestHandler = catchAsync(
       message: 'Semester update successfully',
       data: result,
     })
-    next()
   }
 )
 const deleteSemester: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const id = req.params.id
 
     const result = await AcademicSemesterService.deleteSemester(id)
@@ -88,7 +84,6 @@ const deleteSemester: RequestHandler = catchAsync(
       message: 'Semester deleted successfully',
       data: result,
     })
-    next()
   }
 )
 
