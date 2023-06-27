@@ -4,6 +4,13 @@ import {
   IAcademicSemesterTitles,
 } from './academicSemester.interface'
 
+export const academicSemesterFilterableFields: string[] = [
+  'searchTerm',
+  'title',
+  'code',
+  'year',
+]
+
 export const academicSemesterMonths: IAcademicSemesterMonths[] = [
   'January',
   'February',
