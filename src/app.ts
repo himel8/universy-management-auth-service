@@ -2,7 +2,7 @@ import cors from 'cors'
 import express, { Application, NextFunction, Request, Response } from 'express'
 import Status from 'http-status'
 import globalErrorHandler from './app/middleware/globalErrorHandler'
-import routes from './routes'
+import routes from './app/routes'
 
 const app: Application = express()
 
