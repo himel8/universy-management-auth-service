@@ -1,4 +1,4 @@
-import { Types } from 'mongoose'
+import { Model, Types } from 'mongoose'
 import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interfaces'
 import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface'
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface'
@@ -42,3 +42,5 @@ export type IFaculty = {
   academicDepartment: Types.ObjectId | IAcademicDepartment
   academicFaculty: Types.ObjectId | IAcademicFaculty
 }
+
+export type FacultyModel = Model<IFaculty, Record<string, unknown>>
