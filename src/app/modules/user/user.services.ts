@@ -133,7 +133,7 @@ const createFaculty = async (
 
   if (newUserAllData) {
     newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'student',
+      path: 'faculty',
       populate: [
         { path: 'academicSemester' },
         { path: 'academicDepartment' },
@@ -195,7 +195,7 @@ const createAdmin = async (
 
   if (newUserAllData) {
     newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'student',
+      path: 'admin',
       populate: [{ path: 'managementDepartment' }],
     })
   }

@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express, { Application, NextFunction, Request, Response } from 'express'
 import Status from 'http-status'
@@ -7,6 +8,7 @@ import routes from './app/routes'
 const app: Application = express()
 
 // using cors
+app.use(cookieParser())
 app.use(cors())
 
 //parse data
