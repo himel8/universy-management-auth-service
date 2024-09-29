@@ -24,6 +24,9 @@ const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
       type: Boolean,
       default: true,
     },
+    changePasswordAt: {
+      type: Date,
+    },
     student: {
       type: Schema.Types.ObjectId,
       ref: 'Student',
@@ -67,6 +70,9 @@ userSchema.pre('save', async function (next) {
     user.password,
     Number(config.bycrypt_salt_rounds)
   )
+  if (!user.needPasswordChange) {
+    user.changePasswordAt = new Date()
+  }
   next()
 })
 
